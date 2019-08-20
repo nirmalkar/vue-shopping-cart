@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <script src="https://kit.fontawesome.com/373d4ca056.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <nav class="nav">
+            <div class="nav-left">
+                <a class="brand" href="#">Shopie</a>
+
+                <div class="nav-right">
+                    <a href="">Explore</a>
+                    <a href="">About</a>
+                    <a class="button outline">
+                        <i class="fas fa-shopping-cart text-dark fa-sm"></i>&nbsp;
+                        Cart
+                        {{cart.length}}
+                    </a>
+                </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-6 is-center is-vertical-align">
+                    <img :src="product.thumbnail" alt="" width="500px" height="auto">
+                </div>
+                <div class="col-6 is-vertical-align">
+                    <div>
+                        <h1>{{product.name}}</h1>
+                        <h3>${{product.price}}</h3>
+                        <button class="button primary" @click="addToCart">
+                            Add to cart &nbsp;
+                            <i class="fas fa-shopping-cart "></i>
+                        </button>
+                        <button class="button outline" @click="toggleToWishlist">
+                            Add to wishlist &nbsp;
+                            <i v-if="wishlist.includes(product.id)" class="fas fa-bookmark"></i>
+                            <i v-else class="far fa-bookmark"></i>
+                        </button>
+                        <div class="row" style="margin-top: 30px">
+                            <div class="col-4" v-for="color in product.colors">
+                                <div class="card cursor-pointer" @click="changeImage(color.image)">
+                                    <img :src="color.image" alt="" width="100px" height="auto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
