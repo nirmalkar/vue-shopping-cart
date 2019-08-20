@@ -43,10 +43,13 @@
                             Add to cart &nbsp;
                             <i class="fas fa-shopping-cart "></i>
                         </button>
-                        <button class="button outline" @click="toggleToWishlist">
+                        <button v-if="wishlist.includes(product.id)" class="button" @click="toggleToWishlist">
+                            Added to wishlist &nbsp;
+                            <i class="fas fa-bookmark"></i>
+                        </button>
+                        <button v-else class="button outline" @click="toggleToWishlist">
                             Add to wishlist &nbsp;
-                            <i v-if="wishlist.includes(product.id)" class="fas fa-bookmark"></i>
-                            <i v-else class="far fa-bookmark"></i>
+                            <i class="far fa-bookmark"></i>
                         </button>
                         <div class="row" style="margin-top: 30px">
                             <div class="col-4" v-for="color in product.colors">
